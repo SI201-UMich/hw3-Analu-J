@@ -11,6 +11,7 @@
 import random
 import io
 from contextlib import redirect_stdout
+from unicodedata import name
 from unittest import result
 
 
@@ -44,21 +45,17 @@ class CouponDispenser:
 
 
     def issue_coupon(self, name):
-        """
-        Assign name with a random coupon. If name is already assigned a coupon, return it.
-        If the list coupon_cards is empty, return:
-        "The box is empty."
+        if name in self.customer_roster:
+            return
 
-        Important: Do not use dictionaries in this method.
+        coupon_index = self.next_coupon_index
 
-        Args:
-            name (str): customer name (trimmed, non-empty)
+        self.customer_roster.append(name)
+        self.issued_indices.append(coupon_index)
 
-        Returns:
-            str: message as described above
-        """
-        # TODO: Implement per instructions
-        pass
+        self.next_coupon_index += 1
+        if self.next_coupon_index >= len(self.coupon_cards):
+            self.next_coupon_index = 0
 
     def distribute_session(self):
         """
