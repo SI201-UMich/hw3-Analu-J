@@ -1,6 +1,6 @@
-# Name:
-# Student ID:
-# Email:
+# Name: Analu Jahi
+# Student ID: 41395396
+# Email: analuj@umich.edu
 # Who or what you worked with on this homework (including generative AI like ChatGPT):
 # If you worked with generative AI also add a statement for how you used it.
 # e.g.:
