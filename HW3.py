@@ -57,23 +57,30 @@ class CouponDispenser:
         if self.next_coupon_index >= len(self.coupon_cards):
             self.next_coupon_index = 0
 
+
     def distribute_session(self):
-        """
-        Run the "coupon dispenser" session.
+        while True:
+            user_input = input(
+                f"Round {self.round_number} - Enter customer name(s), or 'show' to see current distribution, or 'exit': "
+        )
 
-        The program will loop asking you to enter a customer name (or names), show, or exit.  
-        - If you type exit (exact spelling) the program will print "Goodbye!" and stop.  
-        - If you enter one or more customer names (separated by commas).
-           * A coupon will be picked at random from a list of coupons for each name 
-           if that name doesn't already have an assigned coupon. 
-        - If you type show (exact spelling) it will display a string with each customer's name and coupon.
+            if user_input == "exit":
+                print("Goodbye!")
+                break
 
-        See the instructions for more details.
+            elif user_input == "show":
+                print(self)
+                continue
 
-        Reminder: Use lists only (no dictionaries).
-        """
-        # TODO: Implement per instructions 
-        pass
+            names = user_input.split(",")
+
+            for name in names:
+                cleaned = name.strip()
+                if cleaned != "":
+                    self.issue_coupon(cleaned)
+
+            self.round_number += 1
+
 
     def tally_distribution(self):
         """
