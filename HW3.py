@@ -11,6 +11,7 @@
 import random
 import io
 from contextlib import redirect_stdout
+from unittest import result
 
 
 class CouponDispenser:
@@ -26,29 +27,21 @@ class CouponDispenser:
     """
 
     def __init__(self, coupon_cards):
-        """
-        Initialize a new CouponDispenser object.
-
-        Args:
-            coupon_cards (list[str]): list of possible coupons users can receive.
-        """
-        # TODO: Implement per instructions
-        def __init__(self, coupon_cards):
-    self.coupon_cards = coupon_cards
-    self.customer_roster = []
-    self.issued_indices = []
-
+        self.coupon_cards = coupon_cards
+        self.customer_roster = []
+        self.issued_indices = []
+        self.next_coupon_index = 0
+        self.round_number = 1
 
     def __str__(self):
-        """
-        Return a single string with all coupons in coupon_cards joined by pipes ('|').
-        If coupon_cards is empty, return an empty string "".
+        result = ""
+        for i in range(len(self.customer_roster)):
+            name = self.customer_roster[i]
+            coupon_index = self.issued_indices[i]
+            coupon = self.coupon_cards[coupon_index]
+            result += f"{name}: {coupon}\n"
+        return result.strip()
 
-        Returns:
-            str
-        """
-        # TODO: Implement per instructions
-        pass
 
     def issue_coupon(self, name):
         """
